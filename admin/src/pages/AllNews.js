@@ -144,10 +144,7 @@ function AllNews() {
                 {/* META */}
                 <div className="news-meta">
                   <div className="meta-box">
-                    ⏰ <RelativeTime
-  createdAt={item.createdAt}
-  fallback={item.time}
-/>
+                    ⏰ <RelativeTime createdAt={item.createdAt} fallback={item.time} />
                   </div>
                 </div>
 

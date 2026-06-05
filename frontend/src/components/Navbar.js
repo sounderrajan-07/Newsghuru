@@ -12,6 +12,7 @@ import {
   FaFutbol,
   FaGraduationCap,
   FaLandmark,
+  FaFilm,
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -67,6 +68,11 @@ const Navbar = () => {
       name: "அரசியல்",
       icon: <FaLandmark />,
       path: "/politics",
+    },
+    {
+      name: "சினிமா",
+      icon: <FaFilm />,
+      path: "/cinema",
     },
   ];
 

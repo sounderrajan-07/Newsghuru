@@ -171,6 +171,12 @@ const Footer = () => {
                 அரசியல்
               </Link>
             </li>
+            <li>
+              <Link to="/cinema">
+                <FaArrowRight />
+                சினிமா
+              </Link>
+            </li>
 
             {/* <li>
               <Link to="/news-guru">

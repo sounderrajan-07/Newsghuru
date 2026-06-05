@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Sidebar.css";
 
+
 import {
   FaTimes,
   FaHome,
@@ -12,7 +13,7 @@ import {
   FaLandmark,
   FaMapMarkedAlt,
   FaGlobe,
-  
+  FaFilm,
 } from "react-icons/fa";
 
 import { Link, useLocation } from "react-router-dom";
@@ -68,6 +69,11 @@ const Sidebar = ({ sidebar, setSidebar }) => {
       icon: <FaLandmark />,
       path: "/politics",
     },
+    {
+      name: "சினிமா",
+      icon: <FaFilm />,
+      path: "/cinema",
+    }
   ];
 
   return (
