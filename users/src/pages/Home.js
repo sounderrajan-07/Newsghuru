@@ -126,7 +126,19 @@ const Home = () => {
     }
   };
 
+  const trendingNews = [
+    breakingNews[0],
+    tamilNews[0],
+    indiaNews[0],
+    politicsNews[0],
+    sportsNews[0],
+    businessNews[0],
+    educationNews[0],
+    worldNews[0],
+  ].filter(Boolean);
+
   const categoryNews = [
+    breakingNews[0],
     tamilNews[0],
     worldNews[0],
     indiaNews[0],
@@ -220,7 +232,7 @@ const Home = () => {
       </div>
 
       <div className="trending-news-grid">
-        {breakingNews.map((n) => (
+        {trendingNews.map((n) => (
           <div
             key={n._id}
             className="trending-news-card"
