@@ -16,6 +16,7 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import DateBar from "./components/DateBar";
 import Navbar from "./components/Navbar";
+import BreakingNewsTicker from "./components/BreakingNewsTicker";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -65,6 +66,7 @@ function Layout({
 
       <DateBar />
       <Navbar />
+      <BreakingNewsTicker />
 
       <main className="main-content">
         {children}
