@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/LatestNews.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
+
   FaVolumeUp,
   FaArrowRight,
   FaFire,
@@ -192,7 +193,10 @@ const LatestNews = () => {
 
               <div className="breaking-meta">
                 <span>
-                  <FaClock /> {allNews[0].time || "No time"}
+                  <RelativeTime
+                    createdAt={allNews[0].createdAt}
+                    fallback={allNews[0].time}
+/>
                 </span>
               </div>
 
@@ -236,7 +240,10 @@ const LatestNews = () => {
 
                     <div className="footer-left">
                       <span>
-                        <FaClock /> {item.time || "No time"}
+                        <RelativeTime
+                        createdAt={item.createdAt}
+                        fallback={item.time}
+/>
                       </span>
                     </div>
 

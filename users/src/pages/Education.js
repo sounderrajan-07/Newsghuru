@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Education.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
   FaGraduationCap,
   FaArrowRight,
 } from "react-icons/fa";
@@ -113,7 +113,10 @@ const Education = () => {
 
               <div className="featured-education-meta">
                 <span>
-                  <FaClock /> {educationNews[0].time || "No time"}
+                  <RelativeTime
+                   createdAt={educationNews[0].createdAt}
+                  fallback={educationNews[0].time}
+                  />
                 </span>
               </div>
 
@@ -158,7 +161,10 @@ const Education = () => {
 
                     <div className="education-footer-left">
                       <span>
-                        <FaClock /> {news.time || "No time"}
+                        <RelativeTime
+                          createdAt={news.createdAt}
+                          fallback={news.time}
+                          />
                       </span>
                     </div>
 

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Home.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
+  
   FaArrowRight,
   FaBolt,
   FaChartLine,
@@ -167,7 +168,10 @@ const Home = () => {
 
               <div className="hero-meta">
                 <span>
-                  <FaClock /> {breakingNews[0].time || "No time"}
+                   <RelativeTime
+                         createdAt={breakingNews[0].createdAt}
+                         fallback={breakingNews[0].time}
+                  />
                 </span>
               </div>
             </div>
@@ -191,7 +195,10 @@ const Home = () => {
                 <h3>{n.title}</h3>
 
                 <span>
-                  <FaClock /> {n.time || "No time"}
+                   <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
                 </span>
               </div>
             </div>
@@ -224,7 +231,10 @@ const Home = () => {
 
               <div className="trending-news-footer">
                 <span>
-                  <FaClock /> {n.time || "No time"}
+                   <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
                 </span>
 
                 <div className="read-more">
@@ -258,7 +268,10 @@ const Home = () => {
               <h3>{n.title}</h3>
 
               <span>
-                <FaClock /> {n.time || "No time"}
+               <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
               </span>
             </div>
           </div>

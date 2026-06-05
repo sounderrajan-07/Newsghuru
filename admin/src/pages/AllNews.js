@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/AllNews.css";
+import RelativeTime from "../components/RelativeTime";
 
 function AllNews() {
   const [news, setNews] = useState([]);
@@ -143,7 +144,10 @@ function AllNews() {
                 {/* META */}
                 <div className="news-meta">
                   <div className="meta-box">
-                    ⏰ {item.time || "No Time"}
+                    ⏰ <RelativeTime
+  createdAt={item.createdAt}
+  fallback={item.time}
+/>
                   </div>
                 </div>
 
