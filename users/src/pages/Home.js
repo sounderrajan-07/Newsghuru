@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Home.css";
 import RelativeTime from "../components/RelativeTime";
+import { FaFilm } from "react-icons/fa";
 
 import {
   
@@ -34,6 +35,7 @@ const Home = () => {
   const [politicsNews, setPoliticsNews] = useState([]);
   const [businessNews, setBusinessNews] = useState([]);
   const [educationNews, setEducationNews] = useState([]);
+  const [cinemaNews, setCinemaNews] = useState([]);
 
   const categoryTamilMap = {
     breaking: "தற்போதைய செய்திகள்",
@@ -44,6 +46,7 @@ const Home = () => {
     sports: "விளையாட்டு",
     education: "கல்வி",
     politics: "அரசியல்",
+    cinema: "சினிமா",
   };
 
   const getCategoryLabel = (category) =>
@@ -67,6 +70,8 @@ const Home = () => {
         return <FaChartLine />;
       case "education":
         return <FaGraduationCap />;
+      case "cinema":
+        return <FaFilm />;
       default:
         return <FaNewspaper />;
     }
@@ -90,6 +95,7 @@ const Home = () => {
         politics,
         business,
         education,
+        cinemaNews,
       ] = await Promise.all([
         API.get("/api/news/category/breaking"),
         API.get("/api/news/category/tamil"),
@@ -99,6 +105,8 @@ const Home = () => {
         API.get("/api/news/category/politics"),
         API.get("/api/news/category/business"),
         API.get("/api/news/category/education"),
+        API.get("/api/news/category/cinema"),
+        API.get("/api/news/category/cinema"),
       ]);
 
       setBreakingNews(breaking.data || []);

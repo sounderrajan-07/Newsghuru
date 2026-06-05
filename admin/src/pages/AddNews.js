@@ -56,7 +56,6 @@ function AddNews() {
         title: "",
         description: "",
         category: "",
-        
       });
 
       setImage(null);
@@ -127,6 +126,7 @@ function AddNews() {
             <option value="business">Business</option>
             <option value="education">Education</option>
             <option value="world">World</option>
+            <option value="cinema">Cinema</option>
           </select>
 
          
