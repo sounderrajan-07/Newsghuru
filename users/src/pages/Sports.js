@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Sports.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
   FaFutbol,
   FaArrowRight,
 } from "react-icons/fa";
@@ -112,7 +112,10 @@ const Sports = () => {
 
               <div className="featured-sports-meta">
                 <span>
-                  <FaClock /> {sportsNews[0].time || "No time"}
+                  <RelativeTime
+                    createdAt={sportsNews[0].createdAt}
+                    fallback={sportsNews[0].time}
+                  />
                 </span>
               </div>
 
@@ -157,7 +160,10 @@ const Sports = () => {
 
                     <div className="sports-footer-left">
                       <span>
-                        <FaClock /> {news.time || "No time"}
+                        <RelativeTime
+                    createdAt={news.createdAt}
+                    fallback={news.time}
+                  />
                       </span>
                     </div>
 

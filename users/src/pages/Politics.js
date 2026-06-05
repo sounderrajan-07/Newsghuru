@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Politics.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
   FaLandmark,
   FaArrowRight,
 } from "react-icons/fa";
@@ -111,7 +111,10 @@ const Politics = () => {
               <div className="featured-politics-meta">
 
                 <span>
-                  <FaClock /> {politicsNews[0].time || "No time"}
+                 <RelativeTime
+                 createdAt={politicsNews[0].createdAt}
+                fallback={politicsNews[0].time}
+/>
                 </span>
 
               </div>
@@ -157,7 +160,10 @@ const Politics = () => {
 
                     <div className="politics-footer-left">
                       <span>
-                        <FaClock /> {news.time || "No time"}
+                        <RelativeTime
+                        createdAt={news.createdAt}
+                        fallback={news.time}
+                        />
                       </span>
                     </div>
 
