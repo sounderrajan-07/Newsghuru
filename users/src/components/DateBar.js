@@ -47,10 +47,11 @@ const DateBar = () => {
   const calendarWrapperRef = useRef(null);
 
   // Sync calendarMonth when displayDate changes or calendar is toggled open
+  const displayYear = displayDate.getFullYear();
+  const displayMonth = displayDate.getMonth();
   useEffect(() => {
-    setCalendarMonth(new Date(displayDate.getFullYear(), displayDate.getMonth(), 1));
-  }, [displayDate, showCalendar]);
-
+    setCalendarMonth(new Date(displayYear, displayMonth, 1));
+  }, [displayYear, displayMonth, showCalendar]);
   /* CLOSE CUSTOM CALENDAR WHEN CLICKING OUTSIDE */
   useEffect(() => {
     const handleClickOutsideCalendar = (event) => {
