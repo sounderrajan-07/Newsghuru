@@ -1,0 +1,55 @@
+/* =========================================
+   GOOGLE FONT
+========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@300;400;500;600;700;800&display=swap");
+
+/* =========================================
+   ROOT VARIABLES
+========================================= */
+
+:root {
+
+  --bg-primary: #0f172a;
+  --bg-secondary: #162033;
+  --bg-card: #1e293b;
+  --bg-header: rgba(15, 23, 42, 0.95);
+  --bg-nav: #1d4ed8;
+  --bg-sidebar: #111827;
+  --bg-hover: #23324d;
+
+  --text-primary: #ffffff;
+  --text-secondary: #cbd5e1;
+
+  --border-color: rgba(255,255,255,0.08);
+
+  --accent-blue: #2563eb;
+  --accent-orange: #c2410c;
+
+  --shadow-color: rgba(0,0,0,0.28);
+}
+
+/* =========================================
+   LIGHT THEME
+========================================= */
+
+.light-theme {
+
+  --bg-primary: #f3f7fc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-header: rgba(255,255,255,0.96);
+  --bg-nav: #2563eb;
+  --bg-sidebar: #ffffff;
+  --bg-hover: #eef4ff;
+
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+
+  --border-color: rgba(0,0,0,0.08);
+
+  --accent-blue: #2563eb;
+  --accent-orange: #c2410c;
+
+  --shadow-color: rgba(0,0,0,0.08);
+}

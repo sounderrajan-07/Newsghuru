@@ -1,0 +1,161 @@
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+  height: 85px;
+  padding: 0 20px;
+  background: var(--bg-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+}
+
+/* =========================================
+   HEADER ACTIONS
+========================================= */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* =========================================
+   ICONS
+========================================= */
+
+.menu-icon,
+.search-icon,
+.theme-toggle {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-icon:hover,
+.search-icon:hover,
+.theme-toggle:hover {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--accent-blue);
+  transform: scale(1.05);
+}
+
+/* =========================================
+   LOGO SECTION
+========================================= */
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* =========================================
+   LOGO IMAGE
+========================================= */
+
+.logo-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+}
+
+/* =========================================
+   LOGO TITLE
+========================================= */
+
+.logo-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--accent-orange);
+  margin: 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  font-family: "Noto Sans Tamil", sans-serif;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+
+  .header {
+    height: 75px;
+    padding: 0 15px;
+  }
+
+  .menu-icon,
+  .search-icon,
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+
+  .logo-section {
+    gap: 8px;
+  }
+
+  .logo-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-title {
+    font-size: 20px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .header {
+    padding: 0 10px;
+  }
+
+  .logo-title {
+    font-size: 18px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+}
+.lang-switch {
+  display: flex;
+  gap: 6px;
+  margin-right: 10px;
+}
+
+.lang-switch button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #eee;
+  font-weight: bold;
+}
+
+.lang-switch button.active-lang {
+  background: #ff4d4d;
+  color: white;
+}
