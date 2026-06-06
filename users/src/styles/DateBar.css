@@ -1,0 +1,500 @@
+/* =========================================
+   DATE BAR CONTAINER & OVERALL
+========================================= */
+.date-bar-container {
+  position: relative;
+  width: 100%;
+  z-index: 99;
+}
+
+.date-bar {
+  width: 100%;
+  background: var(--bg-secondary, #1e293b);
+  color: var(--text-primary, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 22px;
+  border-top: 1px solid var(--border-color, #334155);
+  border-bottom: 1px solid var(--border-color, #334155);
+  position: sticky;
+  top: 85px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.date-bar:hover {
+  background: #273549;
+}
+
+.date-section,
+.time-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary, #cbd5e1);
+}
+
+.date-icon {
+  color: #3b82f6;
+  font-size: 16px;
+}
+
+.time-section span {
+  background: var(--bg-card, #0f172a);
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: var(--text-primary, #ffffff);
+  font-weight: 600;
+  border: 1px solid #334155;
+}
+
+.dropdown-icon {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+  margin-left: 8px;
+}
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   DINAMALAR LAYOUT DROPDOWN MENU
+========================================= */
+.date-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: var(--bg-secondary, #1e293b);
+  border-bottom: 2px solid #3b82f6;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  padding: 20px;
+  color: #f8fafc;
+  animation: slideDown 0.3s ease forwards;
+  transform-origin: top;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: scaleY(0.95); }
+  to { opacity: 1; transform: scaleY(1); }
+}
+
+.dinamalar-calendar-panel {
+  width: 100%;
+  max-width: 650px;
+  background: #0f172a;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Row 1: Header */
+.dc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: #0f172a;
+}
+
+.dc-nav-btn {
+  background: #334155; 
+  color: #93c5fd;
+  border: 1px solid #475569;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.2s;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.dc-nav-btn:hover {
+  background: #475569;
+  color: #fff;
+}
+
+.dc-date-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #1e293b;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dc-cal-icon {
+  color: #94a3b8;
+}
+
+.dc-date-input-text {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dc-cal-chevron {
+  color: #94a3b8;
+  font-size: 12px;
+  transition: transform 0.2s;
+}
+
+.dc-date-picker-wrapper:hover .dc-cal-chevron {
+  color: #fff;
+}
+
+/* =========================================
+   CUSTOM CALENDAR POPUP (DARK MODE)
+   ========================================= */
+.custom-calendar-popup {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  z-index: 1000;
+  cursor: default;
+}
+
+.cc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cc-month-year {
+  font-weight: 600;
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.cc-nav-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.cc-arrow-btn {
+  background: #334155;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cc-arrow-btn:hover {
+  background: #475569;
+  color: #fff;
+}
+
+.cc-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  font-size: 11px;
+  color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.cc-weekday {
+  padding: 4px 0;
+}
+
+.cc-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.cc-day {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.1s;
+  color: #cbd5e1;
+  user-select: none;
+}
+
+.cc-day:hover {
+  background: #334155;
+  color: #fff;
+}
+
+.cc-day.other-month {
+  color: #475569;
+}
+
+.cc-day.selected {
+  background: #3b82f6;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cc-day.today {
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+}
+
+.cc-day.today.selected {
+  color: #fff;
+}
+
+.cc-footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #334155;
+  padding-top: 12px;
+}
+
+.cc-footer-btn {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.cc-footer-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+  color: #93c5fd;
+}
+
+/* Row 2: Big Dates */
+.dc-big-dates-row {
+  display: flex;
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #334155;
+  background: #1e293b;
+}
+
+.dc-big-date-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.dc-big-date-box.left-box {
+  border-right: 1px solid #334155;
+}
+
+.dc-month-text {
+  font-size: 16px;
+  color: #cbd5e1;
+  text-align: center;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.dc-huge-text {
+  font-size: 80px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.dc-huge-text.highlight-text {
+  color: #ec4899;
+}
+
+.dc-special-days {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Row 3: Day Info Bar */
+.dc-day-info-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #334155;
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.dc-day-name {
+  color: #93c5fd;
+  font-size: 18px;
+}
+
+/* Row 4 & 5: Grids */
+.dc-timings-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid #334155;
+  background: #0f172a;
+}
+
+.dc-timings-col, .dc-panchangam-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dc-timings-icon {
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dc-timing-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.dc-timing-item .dc-label {
+  color: #94a3b8;
+  width: 45%;
+}
+
+.dc-timing-item .dc-val {
+  color: #f8fafc;
+  width: 55%;
+  text-align: left;
+}
+
+.dc-panchangam-section {
+  display: flex;
+  gap: 40px;
+  padding: 20px;
+  border-bottom: 1px solid #334155;
+  background: #0f172a;
+}
+
+/* Row 6: Info Box */
+.dc-info-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #1e293b;
+}
+
+.dc-info-image .placeholder-img {
+  width: 100px;
+  height: 80px;
+  background: #334155;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #475569;
+}
+
+.dc-info-text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.dc-info-text p {
+  margin: 0 0 5px 0;
+}
+
+.dc-info-text strong {
+  color: #f8fafc;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 768px) {
+  .date-bar {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 12px 15px;
+    top: 75px;
+  }
+  
+  .dc-panchangam-section {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .dc-timings-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .dc-timings-icon {
+    display: none;
+  }
+  
+  .dc-huge-text {
+    font-size: 60px;
+  }
+
+  .date-dropdown-menu {
+    padding: 10px;
+  }
+  
+  .dc-header {
+    padding: 12px 10px;
+    gap: 6px;
+  }
+  
+  .dc-nav-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  
+  .dc-date-picker-wrapper {
+    padding: 6px 8px;
+    gap: 6px;
+  }
+  
+  .dc-date-input-text {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,52 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* =========================
+   MAIN CONTENT AREA
+========================= */
+.main-content {
+  margin-left: 250px; /* space for fixed sidebar */
+  padding: 25px;
+  min-height: 100vh;
+  background: #f3f4f6;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  /* optional: sidebar can become full width if you later update it */
+}
+
+/* =========================
+   SCROLLBAR STYLING
+========================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5e7eb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
