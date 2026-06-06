@@ -1,29 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "../styles/DateBar.css";
 import { FaCalendarAlt, FaClock, FaSun, FaMoon, FaChevronDown, FaChevronUp } from "react-icons/fa";
 const DateBar = () => {
-  // Check for page reload to clear date parameter and return to today
-  useEffect(() => {
-    try {
-      const navEntries = window.performance.getEntriesByType("navigation");
-      if (navEntries.length > 0 && navEntries[0].type === "reload") {
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('date')) {
-          window.location.href = '/';
-        }
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }, []);
-
-  // Read initial date from URL if it exists, otherwise return null
-  const getUrlDate = () => {
+  // Read the date from current URL, returns null if none/invalid
+  const getUrlDate = useCallback(() => {
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const dateParam = urlParams.get('date');
       if (dateParam) {
-        // Simple check to ensure valid date
         const d = new Date(dateParam);
         if (!isNaN(d.getTime())) return d;
       }
@@ -31,19 +15,56 @@ const DateBar = () => {
       console.error(e);
     }
     return null;
-  };
+  }, []);
 
   const [currentTime, setCurrentTime] = useState(new Date());
   const [isExpanded, setIsExpanded] = useState(false);
   const dropdownRef = useRef(null);
 
-  const urlDate = getUrlDate();
-  
-  // If viewing a specific date from URL, use it. Otherwise, use live time (auto-updates at midnight)
-  const displayDate = urlDate || currentTime;
+  // selectedDate = null means "show today".
+  // On a browser refresh (navigation type === 'reload'), always start with null
+  // so the current date is shown immediately — no flash of the old date.
+  const [selectedDate, setSelectedDate] = useState(() => {
+    try {
+      const navEntries = window.performance.getEntriesByType("navigation");
+      if (navEntries.length > 0 && navEntries[0].type === "reload") {
+        return null; // Show today instantly on refresh
+      }
+    } catch (e) {
+      console.error(e);
+    }
+    return getUrlDate();
+  });
+
+  // On refresh: silently remove the stale ?date param from the URL
+  useEffect(() => {
+    try {
+      const navEntries = window.performance.getEntriesByType("navigation");
+      if (navEntries.length > 0 && navEntries[0].type === "reload") {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('date')) {
+          window.history.replaceState({}, '', window.location.pathname);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  // If a specific date is selected use it, otherwise use the live clock
+  const displayDate = selectedDate || currentTime;
+
+  // Sync selectedDate when browser back/forward buttons are used
+  useEffect(() => {
+    const handlePopState = () => {
+      setSelectedDate(getUrlDate());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [getUrlDate]);
 
   const [showCalendar, setShowCalendar] = useState(false);
-  const [calendarMonth, setCalendarMonth] = useState(new Date((urlDate || new Date()).getFullYear(), (urlDate || new Date()).getMonth(), 1));
+  const [calendarMonth, setCalendarMonth] = useState(new Date((selectedDate || new Date()).getFullYear(), (selectedDate || new Date()).getMonth(), 1));
   const calendarWrapperRef = useRef(null);
 
   // Sync calendarMonth when displayDate changes or calendar is toggled open
@@ -118,7 +139,9 @@ const DateBar = () => {
 
   const handleCalendarClear = (e) => {
     e.stopPropagation();
-    window.location.href = '/';
+    // Go back to today without reload
+    window.history.pushState({}, '', window.location.pathname);
+    setSelectedDate(null);
   };
 
   const handleCalendarToday = (e) => {
@@ -148,7 +171,9 @@ const DateBar = () => {
 
   const navigateToDate = (newDate) => {
     const dateString = newDate.toISOString().split('T')[0];
-    window.location.href = `/?date=${dateString}`;
+    // Update URL without a full page reload
+    window.history.pushState({ date: dateString }, '', `/?date=${dateString}`);
+    setSelectedDate(newDate);
   };
 
   const handlePrevDay = () => {
