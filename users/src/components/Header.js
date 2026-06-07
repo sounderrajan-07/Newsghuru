@@ -32,7 +32,10 @@ const Header = ({ setSidebar, darkMode, setDarkMode }) => {
       "கல்வி": "education",
       "education": "education",
       "அரசியல்": "politics",
-      "politics": "politics"
+      "politics": "politics",
+      "சினிமா": "cinema",
+      "cinema": "cinema",
+      "cinima": "cinema"
     };
 
     const route = categoryMap[term] || term;
