@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/Home.css";
+import RelativeTime from "../components/RelativeTime";
+import { FaFilm } from "react-icons/fa";
 
 import {
-  FaClock,
+  
   FaArrowRight,
   FaBolt,
   FaChartLine,
@@ -33,6 +35,7 @@ const Home = () => {
   const [politicsNews, setPoliticsNews] = useState([]);
   const [businessNews, setBusinessNews] = useState([]);
   const [educationNews, setEducationNews] = useState([]);
+  const [cinemaNews, setCinemaNews] = useState([]);
 
   const categoryTamilMap = {
     breaking: "தற்போதைய செய்திகள்",
@@ -43,6 +46,7 @@ const Home = () => {
     sports: "விளையாட்டு",
     education: "கல்வி",
     politics: "அரசியல்",
+    cinema: "சினிமா",
   };
 
   const getCategoryLabel = (category) =>
@@ -66,6 +70,8 @@ const Home = () => {
         return <FaChartLine />;
       case "education":
         return <FaGraduationCap />;
+      case "cinema":
+        return <FaFilm />;
       default:
         return <FaNewspaper />;
     }
@@ -89,6 +95,7 @@ const Home = () => {
         politics,
         business,
         education,
+        cinemaNews,
       ] = await Promise.all([
         API.get("/api/news/category/breaking"),
         API.get("/api/news/category/tamil"),
@@ -98,6 +105,8 @@ const Home = () => {
         API.get("/api/news/category/politics"),
         API.get("/api/news/category/business"),
         API.get("/api/news/category/education"),
+        API.get("/api/news/category/cinema"),
+        API.get("/api/news/category/cinema"),
       ]);
 
       setBreakingNews(breaking.data || []);
@@ -117,7 +126,19 @@ const Home = () => {
     }
   };
 
+  const trendingNews = [
+    breakingNews[0],
+    tamilNews[0],
+    indiaNews[0],
+    politicsNews[0],
+    sportsNews[0],
+    businessNews[0],
+    educationNews[0],
+    worldNews[0],
+  ].filter(Boolean);
+
   const categoryNews = [
+    breakingNews[0],
     tamilNews[0],
     worldNews[0],
     indiaNews[0],
@@ -167,7 +188,10 @@ const Home = () => {
 
               <div className="hero-meta">
                 <span>
-                  <FaClock /> {breakingNews[0].time || "No time"}
+                   <RelativeTime
+                         createdAt={breakingNews[0].createdAt}
+                         fallback={breakingNews[0].time}
+                  />
                 </span>
               </div>
             </div>
@@ -191,7 +215,10 @@ const Home = () => {
                 <h3>{n.title}</h3>
 
                 <span>
-                  <FaClock /> {n.time || "No time"}
+                   <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
                 </span>
               </div>
             </div>
@@ -205,7 +232,7 @@ const Home = () => {
       </div>
 
       <div className="trending-news-grid">
-        {breakingNews.map((n) => (
+        {trendingNews.map((n) => (
           <div
             key={n._id}
             className="trending-news-card"
@@ -224,7 +251,10 @@ const Home = () => {
 
               <div className="trending-news-footer">
                 <span>
-                  <FaClock /> {n.time || "No time"}
+                   <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
                 </span>
 
                 <div className="read-more">
@@ -258,7 +288,10 @@ const Home = () => {
               <h3>{n.title}</h3>
 
               <span>
-                <FaClock /> {n.time || "No time"}
+               <RelativeTime
+                         createdAt={n.createdAt}
+                         fallback={n.time}
+                  />
               </span>
             </div>
           </div>

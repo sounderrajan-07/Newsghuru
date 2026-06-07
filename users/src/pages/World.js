@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/World.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
   FaGlobe,
   FaArrowRight,
 } from "react-icons/fa";
@@ -110,7 +110,10 @@ const World = () => {
 
               <div className="featured-world-meta">
                 <span>
-                  <FaClock /> {worldNews[0].time || "No time"}
+                  <RelativeTime
+                  createdAt={worldNews[0].createdAt}
+                  fallback={worldNews[0].time}
+/>
                 </span>
               </div>
 
@@ -155,7 +158,10 @@ const World = () => {
 
                     <div className="world-footer-left">
                       <span>
-                        <FaClock /> {news.time || "No time"}
+                        <RelativeTime
+                        createdAt={news.createdAt}
+                        fallback={news.time}
+/>
                       </span>
                     </div>
 

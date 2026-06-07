@@ -33,6 +33,7 @@ import Business from "./pages/Business";
 import Sports from "./pages/Sports";
 import Education from "./pages/Education";
 import Politics from "./pages/Politics";
+import Cinema from "./pages/Cinema";
 import NewsDetails from "./pages/NewsDetails";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -200,6 +201,14 @@ function App() {
           }
         />
 
+        <Route
+          path="/cinema"
+          element={
+            <Layout {...{ sidebar, setSidebar, darkMode, setDarkMode }}>
+              <Cinema />
+            </Layout>
+          }
+        />
         {/* NEWS DETAILS */}
         <Route
           path="/news/:id"

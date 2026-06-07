@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import API from "../config/api";
 import "../styles/India.css";
+import RelativeTime from "../components/RelativeTime";
 
 import {
-  FaClock,
   FaFlag,
   FaArrowRight,
 } from "react-icons/fa";
@@ -110,7 +110,10 @@ const India = () => {
 
               <div className="featured-india-meta">
                 <span>
-                  <FaClock /> {indiaNews[0].time || "No time"}
+                  <RelativeTime
+                  createdAt={indiaNews[0].createdAt}
+                  fallback={indiaNews[0].time}
+/>
                 </span>
               </div>
 
@@ -155,7 +158,10 @@ const India = () => {
 
                     <div className="india-footer-left">
                       <span>
-                        <FaClock /> {news.time || "No time"}
+                        <RelativeTime
+                          createdAt={news.createdAt}
+                          fallback={news.time}
+/>
                       </span>
                     </div>
 

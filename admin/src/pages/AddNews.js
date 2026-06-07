@@ -2,12 +2,12 @@ import { useState } from "react";
 import API from "../config/api";
 import "../styles/AddNews.css";
 
+
 function AddNews() {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
     category: "",
-    time: "",
   });
 
   const [image, setImage] = useState(null);
@@ -41,7 +41,6 @@ function AddNews() {
       newsData.append("title", formData.title);
       newsData.append("description", formData.description);
       newsData.append("category", formData.category.toLowerCase());
-      newsData.append("time", formData.time);
       newsData.append("image", image);
 
       await API.post("/api/news", newsData, {
@@ -57,7 +56,6 @@ function AddNews() {
         title: "",
         description: "",
         category: "",
-        time: "",
       });
 
       setImage(null);
@@ -128,16 +126,10 @@ function AddNews() {
             <option value="business">Business</option>
             <option value="education">Education</option>
             <option value="world">World</option>
+            <option value="cinema">Cinema</option>
           </select>
 
-          {/* TIME */}
-          <input
-            type="text"
-            name="time"
-            placeholder="20 mins ago"
-            value={formData.time}
-            onChange={handleChange}
-          />
+         
 
           {/* BUTTON */}
           <button type="submit" className="upload-btn">

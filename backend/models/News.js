@@ -21,7 +21,17 @@ const newsSchema =
     category: {
       type: String,
       required: true,
-    },
+enum: [
+  "breaking",
+  "tamil",
+  "india",
+  "world",
+  "sports",
+  "politics",
+  "business",
+  "education",
+  "cinema"
+],
 
     time: {
       type: String,

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Navbar.css";
 
+
 import {
   FaHome,
   FaNewspaper,
@@ -12,6 +13,7 @@ import {
   FaFutbol,
   FaGraduationCap,
   FaLandmark,
+  FaFilm,
 } from "react-icons/fa";
 
 import { NavLink } from "react-router-dom";
@@ -68,6 +70,11 @@ const Navbar = () => {
       icon: <FaLandmark />,
       path: "/politics",
     },
+    {
+      name: "சினிமா",
+      icon: <FaFilm />,
+      path: "/cinema",
+    }
   ];
 
   return (

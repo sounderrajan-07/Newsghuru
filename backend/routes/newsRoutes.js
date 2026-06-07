@@ -74,6 +74,26 @@ router.get("/category/:category", async (req, res) => {
 });
 
 
+// GET SINGLE NEWS BY ID
+router.get("/:id", async (req, res) => {
+  try {
+    const news = await News.findById(req.params.id);
+    if (!news) {
+      return res.status(404).json({
+        message: "News not found",
+      });
+    }
+
+    res.json(news);
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+});
+
+
 // DELETE SINGLE NEWS
 router.delete("/:id", async (req, res) => {
   try {
