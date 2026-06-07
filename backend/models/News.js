@@ -31,7 +31,8 @@ enum: [
   "business",
   "education",
   "cinema"
-],
+]
+    },
 
     time: {
       type: String,

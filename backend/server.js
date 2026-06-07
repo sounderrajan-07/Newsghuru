@@ -5,6 +5,7 @@ const path = require("path");
 
 const connectDB = require("./db");
 const newsRoutes = require("./routes/newsRoutes");
+const infoRoutes = require("./routes/infoRoutes");
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Routes
 app.use("/api/news", newsRoutes);
+app.use("/api/information", infoRoutes);
 
 // Admin Login
 app.post("/api/login", (req, res) => {

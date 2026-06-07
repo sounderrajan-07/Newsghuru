@@ -13,6 +13,7 @@ import AddNews from "./pages/AddNews";
 import AllNews from "./pages/AllNews";
 import Login from "./pages/Login";
 import Sidebar from "./components/Sidebar";
+import Information from "./pages/Information";
 
 const isLoggedIn = () => {
   return localStorage.getItem("token");
@@ -66,6 +67,17 @@ function App() {
             <ProtectedRoute>
               <Layout>
                 <AllNews />
+              </Layout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/information"
+          element={
+            <ProtectedRoute>
+              <Layout>
+                <Information />
               </Layout>
             </ProtectedRoute>
           }

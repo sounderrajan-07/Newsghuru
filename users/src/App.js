@@ -19,6 +19,7 @@ import Navbar from "./components/Navbar";
 import BreakingNewsTicker from "./components/BreakingNewsTicker";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import InformationPopup from "./components/InformationPopup";
 
 /* =========================================
    USER PAGES
@@ -56,6 +57,7 @@ function Layout({
         darkMode ? "dark-theme" : "light-theme"
       }`}
     >
+      <InformationPopup />
       <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
 
       <Header

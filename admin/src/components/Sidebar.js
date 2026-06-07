@@ -32,6 +32,10 @@ function Sidebar() {
           All News
         </Link>
 
+        <Link className="sidebar-link" to="/information">
+          Information
+        </Link>
+
       </div>
 
       {isLoggedIn && (

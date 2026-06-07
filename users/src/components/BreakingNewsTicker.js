@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaBolt, FaPause, FaPlay } from "react-icons/fa";
+import { FaBolt,  } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import API from "../config/api";
 import "../styles/BreakingNewsTicker.css";
